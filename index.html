@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <!-- ======== META DESCRIPTION & SOCIAL PREVIEW ======== -->
+    <meta name="description" content="Free PDF toolkit for students. Compress, merge, split, convert to images, and extract text from PDFs. 100% private and free.">
+    
+    <!-- Open Graph (for social media previews like Facebook, LinkedIn) -->
+    <meta property="og:title" content="PDF Buddy - Free PDF Toolkit for Students">
+    <meta property="og:description" content="Compress, merge, split, convert to images, and extract text from PDFs. 100% private and free.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pdf-buddy.onrender.com">
+    
+    <!-- Twitter Card (for Twitter/X previews) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PDF Buddy - Free PDF Toolkit for Students">
+    <meta name="twitter:description" content="Compress, merge, split, convert to images, and extract text from PDFs. 100% private.">
+    
+    <!-- Author -->
+    <meta name="author" content="Taliat Ibrahim">
+    
+    <!-- Theme color (matches your dark mode) -->
+    <meta name="theme-color" content="#0d1117">
+    <!-- ======== END META ======== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Buddy - Student Toolkit</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <h1>📄 PDF Buddy</h1>
+        <p>Compress, Merge, Split, Convert to Images, or Extract Text</p>
+
+        <!-- TABS -->
+        <div class="tabs">
+            <button id="compressTab" class="tab active">🗜️ Compress</button>
+            <button id="mergeTab" class="tab">🔗 Merge</button>
+            <button id="splitTab" class="tab">✂️ Split</button>
+            <button id="imageTab" class="tab">🖼️ To Images</button>
+            <button id="extractTab" class="tab">📄 Extract Text</button>
+        </div>
+
+        <!-- ============ COMPRESS ============ -->
+        <div id="compressMode">
+            <div id="dropZone">
+                <p>📁 Drag & Drop a single PDF here</p>
+                <p style="font-size: 14px; color: #888;">or</p>
+                <input type="file" id="fileInput" accept=".pdf">
+                <label for="fileInput" id="uploadLabel">Choose a PDF file</label>
+            </div>
+            <div id="fileInfo" style="display: none;">
+                <p id="fileName">File selected: </p>
+                <div style="margin: 15px 0;">
+                    <label for="qualitySelect" style="margin-right: 10px;">Compression Quality:</label>
+                    <select id="qualitySelect" style="padding: 8px 15px; border-radius: 6px; background: #161b22; color: #c9d1d9; border: 1px solid #30363d;">
+                        <option value="72">Low (72 DPI - Smallest)</option>
+                        <option value="150" selected>Medium (150 DPI - Recommended)</option>
+                        <option value="300">High (300 DPI - Best Quality)</option>
+                    </select>
+                </div>
+                <button id="compressBtn">🗜️ Compress PDF</button>
+            </div>
+        </div>
+
+        <!-- ============ MERGE ============ -->
+        <div id="mergeMode" style="display: none;">
+            <div id="mergeDropZone">
+                <p>📚 Drag & Drop multiple PDFs here</p>
+                <p style="font-size: 14px; color: #888;">or</p>
+                <input type="file" id="mergeFileInput" accept=".pdf" multiple>
+                <label for="mergeFileInput" id="mergeUploadLabel">Choose PDF files</label>
+            </div>
+            <div id="mergeFileList" style="display: none;">
+                <h3>Files to Merge (in this order):</h3>
+                <ul id="fileListItems"></ul>
+                <button id="mergeBtn">🔗 Merge All PDFs</button>
+            </div>
+        </div>
+
+        <!-- ============ SPLIT ============ -->
+        <div id="splitMode" style="display: none;">
+            <div id="splitDropZone">
+                <p>✂️ Drag & Drop a single PDF here</p>
+                <p style="font-size: 14px; color: #888;">or</p>
+                <input type="file" id="splitFileInput" accept=".pdf">
+                <label for="splitFileInput" id="splitUploadLabel">Choose a PDF file</label>
+            </div>
+            <div id="splitFileInfo" style="display: none;">
+                <p id="splitFileName">File selected: </p>
+                <div style="margin: 15px 0;">
+                    <label for="pageRange" style="margin-right: 10px;">Page range (e.g. 1-3, 5, 7-10):</label>
+                    <input type="text" id="pageRange" placeholder="e.g. 1-3, 5, 7-10" 
+                           style="padding: 10px; width: 70%; border-radius: 6px; background: #0d1117; color: #c9d1d9; border: 1px solid #30363d;">
+                </div>
+                <button id="splitBtn">✂️ Split PDF</button>
+            </div>
+        </div>
+
+        <!-- ============ PDF TO IMAGES ============ -->
+        <div id="imageMode" style="display: none;">
+            <div id="imageDropZone">
+                <p>🖼️ Drag & Drop a single PDF here</p>
+                <p style="font-size: 14px; color: #888;">or</p>
+                <input type="file" id="imageFileInput" accept=".pdf">
+                <label for="imageFileInput" id="imageUploadLabel">Choose a PDF file</label>
+            </div>
+            <div id="imageFileInfo" style="display: none;">
+                <p id="imageFileName">File selected: </p>
+                <div style="margin: 15px 0; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <div>
+                        <label for="imageFormat" style="margin-right: 10px;">Format:</label>
+                        <select id="imageFormat" style="padding: 8px 15px; border-radius: 6px; background: #161b22; color: #c9d1d9; border: 1px solid #30363d;">
+                            <option value="png">PNG (Best quality)</option>
+                            <option value="jpeg" selected>JPEG (Smaller file)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="imageDpi" style="margin-right: 10px;">DPI:</label>
+                        <select id="imageDpi" style="padding: 8px 15px; border-radius: 6px; background: #161b22; color: #c9d1d9; border: 1px solid #30363d;">
+                            <option value="150">150 (Screen)</option>
+                            <option value="300" selected>300 (Print)</option>
+                            <option value="600">600 (High Quality)</option>
+                        </select>
+                    </div>
+                </div>
+                <button id="imageBtn">🖼️ Convert to Images (ZIP)</button>
+            </div>
+        </div>
+
+        <!-- ============ EXTRACT TEXT ============ -->
+        <div id="extractMode" style="display: none;">
+            <div id="extractDropZone">
+                <p>📄 Drag & Drop a single PDF here</p>
+                <p style="font-size: 14px; color: #888;">or</p>
+                <input type="file" id="extractFileInput" accept=".pdf">
+                <label for="extractFileInput" id="extractUploadLabel">Choose a PDF file</label>
+            </div>
+            <div id="extractFileInfo" style="display: none;">
+                <p id="extractFileName">File selected: </p>
+                <div style="margin: 15px 0;">
+                    <label for="extractRange" style="margin-right: 10px;">Page range (optional, leave blank for all):</label>
+                    <input type="text" id="extractRange" placeholder="e.g. 1-3, 5, 7-10" 
+                           style="padding: 10px; width: 70%; border-radius: 6px; background: #0d1117; color: #c9d1d9; border: 1px solid #30363d;">
+                    <p style="font-size: 12px; color: #8b949e; margin-top: 5px;">Leave blank to extract all pages</p>
+                </div>
+                <button id="extractBtn">📄 Extract Text (.txt)</button>
+            </div>
+        </div>
+
+    <!-- FOOTER - FORCED FULL WIDTH -->
+    <div style="width: 100%; display: block; clear: both; margin-top: 40px; padding: 20px 0; border-top: 1px solid #30363d; text-align: center; color: #8b949e; font-size: 14px;">
+        © 2026 PDF Buddy. Built with ❤️ by Student (Taliat Ibrahim), for Students.
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+    

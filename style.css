@@ -1,0 +1,179 @@
+/* Reset and dark mode base */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0d1117;
+    color: #c9d1d9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    width: 850px;
+    max-width: 95%;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0;
+    color: #58a6ff;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin: 25px 0;
+    flex-wrap: wrap;
+}
+
+.tab {
+    background: #161b22;
+    border: 1px solid #30363d;
+    color: #8b949e;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 14px;
+}
+
+.tab:hover {
+    background: #1f2937;
+    color: #c9d1d9;
+}
+
+.tab.active {
+    background: #1f6feb;
+    color: white;
+    border-color: #1f6feb;
+}
+
+/* Shared drop zone base */
+#dropZone, #mergeDropZone, #splitDropZone, #imageDropZone, #extractDropZone {
+    border: 2px dashed #30363d;
+    border-radius: 16px;
+    padding: 40px 20px;
+    margin: 20px 0;
+    background-color: #161b22;
+    transition: 0.3s ease;
+}
+
+#dropZone.dragover, #mergeDropZone.dragover, #splitDropZone.dragover, 
+#imageDropZone.dragover, #extractDropZone.dragover {
+    border-color: #58a6ff;
+    background-color: #1f2937;
+}
+
+/* Hide default file inputs */
+#fileInput, #mergeFileInput, #splitFileInput, #imageFileInput, #extractFileInput {
+    display: none;
+}
+
+#uploadLabel, #mergeUploadLabel, #splitUploadLabel, #imageUploadLabel, #extractUploadLabel {
+    display: inline-block;
+    background-color: #238636;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 10px;
+}
+
+#uploadLabel:hover, #mergeUploadLabel:hover, #splitUploadLabel:hover, 
+#imageUploadLabel:hover, #extractUploadLabel:hover {
+    background-color: #2ea043;
+}
+
+/* Info boxes */
+#fileInfo, #mergeFileList, #splitFileInfo, #imageFileInfo, #extractFileInfo {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* File list for merge */
+#fileListItems {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin: 15px 0;
+}
+
+#fileListItems li {
+    background: #0d1117;
+    padding: 10px 15px;
+    margin: 5px 0;
+    border-radius: 6px;
+    border-left: 3px solid #58a6ff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#fileListItems li button {
+    background: #da3633;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    padding: 3px 12px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#fileListItems li button:hover {
+    background: #f85149;
+}
+
+/* Buttons */
+#compressBtn, #mergeBtn, #splitBtn, #imageBtn, #extractBtn {
+    background-color: #1f6feb;
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#compressBtn:hover, #mergeBtn:hover, #splitBtn:hover, #imageBtn:hover, #extractBtn:hover {
+    background-color: #388bfd;
+}
+
+#compressBtn:disabled, #mergeBtn:disabled, #splitBtn:disabled, 
+#imageBtn:disabled, #extractBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#pageRange, #extractRange {
+    font-size: 16px;
+}
+
+#pageRange:focus, #extractRange:focus {
+    outline: none;
+    border-color: #58a6ff;
+}
+
+select {
+    font-size: 14px;
+}
+
+select:focus {
+    outline: none;
+    border-color: #58a6ff;
+}
